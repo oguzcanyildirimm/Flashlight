@@ -12,11 +12,13 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var flashlightView: UIView!
+    @IBOutlet weak var flashlightOnImage: UIImageView!
+    @IBOutlet weak var flashlightOffImage: UIImageView!
     @IBOutlet var colorChangingView: UIView!
+    
+    var captureDevice: AVCaptureDevice?
     var isFlashlightOn = false
     var isBlack = true
-    var captureDevice: AVCaptureDevice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,8 @@ class ViewController: UIViewController {
         // Connect the gesture recognizer with the defined function
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         colorChangingView.addGestureRecognizer(tapGesture)
-        flashlightView?.addGestureRecognizer(tapGesture)
+        flashlightOnImage.isUserInteractionEnabled = true
+        flashlightOnImage.addGestureRecognizer(tapGesture)
 
         // Check the flash capability of the device
         captureDevice = AVCaptureDevice.default(for: .video)
@@ -38,7 +41,11 @@ class ViewController: UIViewController {
             print("An error occurred while setting the flash mode.")
         }
     }
-
+    
+    func changeBackgroundColor(to color: UIColor) {
+        self.colorChangingView.backgroundColor = color
+        }
+    
     func toggleFlashlight() {
         isFlashlightOn = !isFlashlightOn
 
@@ -50,7 +57,6 @@ class ViewController: UIViewController {
             } else {
                 captureDevice?.torchMode = .off
             }
-
             captureDevice?.unlockForConfiguration()
         } catch {
             print("The error occurred while changing the flash mode.")
@@ -58,7 +64,12 @@ class ViewController: UIViewController {
     }
     
     @objc func handleTap() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        
         toggleFlashlight()
+        
+        generator.prepare()
+        generator.impactOccurred()
         
         if isBlack {
             changeBackgroundColor(to: .white)
@@ -66,11 +77,8 @@ class ViewController: UIViewController {
             changeBackgroundColor(to: .black)
         }
         isBlack = !isBlack
-    }
-    
-    func changeBackgroundColor(to color: UIColor) {
-        self.colorChangingView.backgroundColor = color
         }
+    
     }
         
     

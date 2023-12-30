@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flashlight.on.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8pl-TN-Lz9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flashlight.off.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-8m-4Ro" userLabel="flashlight.off">
                                 <rect key="frame" x="87" y="384" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flashlight.off.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-8m-4Ro">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flashlight.on.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8pl-TN-Lz9" userLabel="flashlight.on">
                                 <rect key="frame" x="87" y="384" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,6 +32,8 @@
                     </view>
                     <connections>
                         <outlet property="colorChangingView" destination="7ZA-yI-K0o" id="uh5-e7-obj"/>
+                        <outlet property="flashlightOffImage" destination="8pl-TN-Lz9" id="CLg-ze-ZCV"/>
+                        <outlet property="flashlightOnImage" destination="7OO-8m-4Ro" id="UZG-lG-w2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
